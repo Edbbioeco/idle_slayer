@@ -6,5 +6,6 @@
 .quarto
 *.csv
 *.xlsx
+*.xls
 *.png
 *.rds
