@@ -6,6 +6,8 @@ library(tidyverse)
 
 library(magrittr)
 
+library(ggview)
+
 # Dados ----
 
 ## Importar ----
