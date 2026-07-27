@@ -59,8 +59,23 @@ df_x2 <- purrr::map2_dfr(
                                 ", p = ",
                                 qq$p.value |> round(2)),
                    Frequência = frequencia,
-                   Bau = 15)
+                   Baú = 15)
 
     })
 
 df_x2
+
+## Gráfico ----
+
+freq |>
+  tidyr::pivot_longer(cols = 2:3,
+                      names_to = "Conteúdo",
+                      values_to = "Frequência") |>
+  dplyr::rename("Baú" = 1) |>
+  dplyr::mutate(Baú = Baú |>
+                  forcats::fct_relevel(1:30 |> as.character())) |>
+  ggplot(aes(Baú, Frequência)) +
+  geom_col() +
+  facet_wrap(~Conteúdo, ncol = 1, scales = "free_y") +
+  theme_bw() +
+  ggview::canvas(height = 10, width = 12)
