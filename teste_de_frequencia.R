@@ -9,3 +9,9 @@ library(tidyverse)
 ## Importar ----
 
 dados <- readxl::read_xlsx("./dados.xlsx")
+
+### Visualizar ----
+
+dados
+
+dados |> dplyr::glimpse()
