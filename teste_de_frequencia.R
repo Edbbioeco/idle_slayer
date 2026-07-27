@@ -88,3 +88,6 @@ freq |>
         axis.title = element_text(color = "black", size = 20),
         strip.text = element_text(color = "black", size = 20)) +
   ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "grafico_qui_quadrado.png",
+       height = 10, width = 12)
