@@ -37,7 +37,6 @@ freq <- dados |>
   tidyr::pivot_wider(names_from = conteudo,
                      values_from = n,
                      values_fill = 0) |>
-  dplyr::arrange(bau) |>
-  dplyr::pull(mimico)
+  dplyr::arrange(bau)
 
 freq
