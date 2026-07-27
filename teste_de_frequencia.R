@@ -76,6 +76,10 @@ freq |>
                   forcats::fct_relevel(1:30 |> as.character())) |>
   ggplot(aes(Baú, Frequência)) +
   geom_col() +
+  geom_text(data = df_x2,
+            aes(Baú, Frequência, label = sts),
+            size = 7,
+            color = "black") +
   facet_wrap(~Conteúdo, ncol = 1, scales = "free_y") +
   theme_bw() +
   theme(axis.text = element_text(color = "black", size = 20),
