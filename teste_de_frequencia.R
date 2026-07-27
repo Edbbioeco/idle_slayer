@@ -27,3 +27,17 @@ dados %<>%
 dados
 
 dados |> dplyr::glimpse()
+
+# Teste Qui-Quadrado ----
+
+## Calcular frequência ----
+
+freq <- dados |>
+  dplyr::count(bau, conteudo) |>
+  tidyr::pivot_wider(names_from = conteudo,
+                     values_from = n,
+                     values_fill = 0) |>
+  dplyr::arrange(bau) |>
+  dplyr::pull(mimico)
+
+freq
