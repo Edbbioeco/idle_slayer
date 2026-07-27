@@ -10,7 +10,17 @@ library(tidyverse)
 
 dados <- readxl::read_xlsx("./dados.xlsx")
 
-### Visualizar ----
+## Visualizar ----
+
+dados
+
+dados |> dplyr::glimpse()
+
+## Tratar ----
+
+dados %<>%
+  dplyr::mutate(dplyr::across(.cols = c(1, 3),
+                              .fns = ~. |> as.character()))
 
 dados
 
