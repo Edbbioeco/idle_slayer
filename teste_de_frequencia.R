@@ -4,6 +4,8 @@ library(readxl)
 
 library(tidyverse)
 
+library(magrittr)
+
 # Dados ----
 
 ## Importar ----
