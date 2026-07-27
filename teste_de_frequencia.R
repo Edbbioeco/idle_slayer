@@ -46,7 +46,7 @@ freq
 df_x2 <- purrr::map2_dfr(
   freq[2:3] |>
     names(),
-  c(6, 20),
+  c(7, 22),
   \(conteudo, frequencia){
 
     qq <- chisq.test(freq[[conteudo]])
