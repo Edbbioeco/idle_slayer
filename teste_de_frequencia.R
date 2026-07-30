@@ -71,12 +71,13 @@ df_x2
 ## Gráfico ----
 
 freq |>
+  dplyr::mutate(bau = bau |>
+                  forcats::as_factor() |>
+                  forcats::fct_reorder(mimico)) |>
   tidyr::pivot_longer(cols = 2:3,
                       names_to = "Conteúdo",
                       values_to = "Frequência") |>
   dplyr::rename("Baú" = 1) |>
-  dplyr::mutate(Baú = Baú |>
-                  forcats::fct_relevel(1:30 |> as.character())) |>
   ggplot(aes(Baú, Frequência)) +
   geom_col() +
   geom_text(data = df_x2,
