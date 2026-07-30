@@ -35,6 +35,7 @@ dados |> dplyr::glimpse()
 ## Calcular frequência ----
 
 freq <- dados |>
+  dplyr::filter(Teste == "Pre") |>
   dplyr::count(bau, conteudo) |>
   tidyr::pivot_wider(names_from = conteudo,
                      values_from = n,
