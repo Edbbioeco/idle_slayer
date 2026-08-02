@@ -130,3 +130,29 @@ df_x2_pos <- purrr::map2_dfr(
   })
 
 df_x2_pos
+
+## Gráfico ----
+
+freq_pos |>
+  dplyr::mutate(bau = bau |>
+                  forcats::as_factor() |>
+                  forcats::fct_reorder(mimico)) |>
+  tidyr::pivot_longer(cols = 2:3,
+                      names_to = "Conteúdo",
+                      values_to = "Frequência") |>
+  dplyr::rename("Baú" = 1) |>
+  ggplot(aes(Baú, Frequência)) +
+  geom_col() +
+  geom_text(data = df_x2_pos,
+            aes(Baú, Frequência, label = sts),
+            size = 7,
+            color = "black") +
+  facet_wrap(~Conteúdo, ncol = 1, scales = "free_y") +
+  theme_bw() +
+  theme(axis.text = element_text(color = "black", size = 20),
+        axis.title = element_text(color = "black", size = 20),
+        strip.text = element_text(color = "black", size = 20)) +
+  ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "grafico_qui_quadrado_pos_teste.png",
+       height = 10, width = 12)
