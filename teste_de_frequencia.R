@@ -93,3 +93,16 @@ freq |>
 
 ggsave(filename = "grafico_qui_quadrado.png",
        height = 10, width = 12)
+
+# Análises pós-test ----
+
+## Calcular frequência ----
+
+freq_pos <- dados |>
+  dplyr::count(bau, conteudo) |>
+  tidyr::pivot_wider(names_from = conteudo,
+                     values_from = n,
+                     values_fill = 0) |>
+  dplyr::arrange(bau)
+
+freq_pos
