@@ -106,3 +106,27 @@ freq_pos <- dados |>
   dplyr::arrange(bau)
 
 freq_pos
+
+## Teste Qui-Quadrado ----
+
+df_x2_pos <- purrr::map2_dfr(
+  freq_pos[2:3] |>
+    names(),
+  c(7, 22),
+  \(conteudo, frequencia){
+
+    qq <- chisq.test(freq_pos[[conteudo]])
+
+    tibble::tibble(Conteúdo = conteudo,
+                   sts = paste0("X² = ",
+                                qq$statistic |> round(2),
+                                ", df = ",
+                                qq$parameter,
+                                ", p = ",
+                                qq$p.value |> round(2)),
+                   Frequência = frequencia,
+                   Baú = 15)
+
+  })
+
+df_x2_pos
